@@ -53,11 +53,11 @@ for user in time_dict:
     lambda2 = 1
 
     try:
-        globalscore = float(compiled_dict[user][0]) * float(lambda1) * (1/float(compiled_dict[user][2]))
+        globalscore = 1000 * float(compiled_dict[user][0]) * float(lambda1) * (1/float(compiled_dict[user][2]))
     except ValueError:
         globalscore = 'No global score'
     try:
-        globalscore += float(compiled_dict[user][1]) * float(lambda2) * (1/float(compiled_dict[user][3]))
+        globalscore += 1000 * float(compiled_dict[user][1]) * float(lambda2) * (1/float(compiled_dict[user][3]))
     except ValueError:
         globalscore = None
         globalscore = 'No global score'
@@ -74,8 +74,8 @@ for user in compiled_dict:
     cur_dict = {}
     cur_dict['Turkle.Username'] = user
     cur_dict['Pilot.Data.Agreement'] = compiled_dict[user][0]
-    cur_dict['Pilot.Data.Average.Time'] = compiled_dict[user][1]
-    cur_dict['Entity.Typing.Agreement'] = compiled_dict[user][2]
+    cur_dict['Pilot.Data.Average.Time'] = compiled_dict[user][2]
+    cur_dict['Entity.Typing.Agreement'] = compiled_dict[user][1]
     cur_dict['Entity.Typing.Average.Time'] = compiled_dict[user][3]
     cur_dict['Annotator.Score'] = compiled_dict[user][4]
     csv_format_list.append(cur_dict)
