@@ -78,6 +78,9 @@ def main():
     # Calculate average observed agreement between annotators
     print(round((total/turkers),2))
 
+    with open("pilot-Results.json", "w") as f1:
+        json.dump(agreement_dict, f1)
+
 
 if __name__=="__main__":
     main()
