@@ -19,7 +19,10 @@ def sort_annotations(file, prep_dict):
         for argument_span in argument_spans:
             argument_span['HITId'] = row['HITId']
             prep_dict[row['Turkle.Username']].append(argument_span)
-        
+       
+    for user in prep_dict:
+        print(user)
+        print()
     return(prep_dict)
 
 # Calculate_matches function, calculate agreement between annotators

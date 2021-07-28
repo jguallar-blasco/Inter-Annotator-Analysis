@@ -64,25 +64,32 @@ def calculate_matches(prep_dict, agreement_dict):
 
                     answer_type = compare_answers['type']
                     compare_username_dict[answer_type] += 1
+            
+            total += 1
 
             user_count = []
             for count in username_dict:
                 user_count.append(username_dict[count])
             
-            print(user_count)
+            #print(user_count)
 
             compareuser_count = []
             for count2 in compare_username_dict:
                 compareuser_count.append(compare_username_dict[count2])
 
-            print(compareuser_count)
+            #print(compareuser_count)
 
 
                 #print(username)
                 #print(compare_username)
-            print(username)
-            print(compare_username)
-            print(cohen_kappa_score(user_count, compareuser_count))
+            #print(username)
+            #print(compare_username)
+            #print(cohen_kappa_score(user_count, compareuser_count))
+            agreement += cohen_kappa_score(user_count, compareuser_count)
+
+        agreement_dict[username].append(agreement/total)
+    print(agreement_dict)
+    return agreement_dict
                        
 
 
@@ -94,12 +101,12 @@ def main():
     agreement_dict = defaultdict(list)
     prep_dict = sort_annotations(sys.argv[1], prep_dict)
     del prep_dict['Turkle.Username']
-    del prep_dict['jgualla1']
-    calculate_matches(prep_dict, agreement_dict)
+    #del prep_dict['jgualla1']
+    agreement_dict = calculate_matches(prep_dict, agreement_dict)
 
     # Calculate average observed agreement between annotators
 
-    with open("entity_typing_deduped-Results.json", "w") as f1:
+    with open("entity_typing_deduped-Results_Kappa.json", "w") as f1:
         json.dump(agreement_dict, f1)
 
 

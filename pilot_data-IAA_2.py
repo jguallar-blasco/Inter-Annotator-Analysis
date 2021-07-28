@@ -66,6 +66,7 @@ def main():
     prep_dict = defaultdict(list)
     agreement_dict = defaultdict(list)
     prep_dict = sort_annotations(sys.argv[1], prep_dict)
+    
     agreement_dict = calculate_matches(prep_dict, agreement_dict)
 
     total = 0

@@ -6,7 +6,7 @@ from collections import defaultdict
 with open('pilot-Results.json') as f1:
     data_1 = json.load(f1)
 
-with open('entity_typing_deduped-Results.json') as f2:
+with open('entity_typing_deduped-Results_Kappa.json') as f2:
     data_2 = json.load(f2)
 
 
@@ -17,7 +17,7 @@ reader = csv.DictReader(csv_fh)
 
 for row in reader:
     time_dict[row['\ufeffUsername']] = []
-    time_dict[row['\ufeffUsername']].append(row['Mean Time'])
+    time_dict[row['\ufeffUsername']].append(row['Median Time'])
 
 csv_fh = open('entity_typing_deduped-Batch_866_stats.csv', 'r', encoding='utf-8')
 reader = csv.DictReader(csv_fh)
@@ -54,11 +54,12 @@ for user in time_dict:
 
     try:
         globalscore = 1000 * float(compiled_dict[user][0]) * float(lambda1) * (1/float(compiled_dict[user][2]))
-    except ValueError:
+    except Exception:
+        globalscore = None
         globalscore = 'No global score'
     try:
         globalscore += 1000 * float(compiled_dict[user][1]) * float(lambda2) * (1/float(compiled_dict[user][3]))
-    except ValueError:
+    except Exception:
         globalscore = None
         globalscore = 'No global score'
 
@@ -84,7 +85,7 @@ print(csv_format_list)
 
 csv_format_list_filtered = filter(None, csv_format_list)
 
-with open('annotator_scores-Results.csv', 'w', newline='') as csvfile:
+with open('annotator_scores-Results_Kappa.csv', 'w', newline='') as csvfile:
     fieldnames = ['Turkle.Username', 'Pilot.Data.Agreement', 'Pilot.Data.Average.Time', 
             'Entity.Typing.Agreement', 'Entity.Typing.Average.Time', 'Annotator.Score']
     writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
