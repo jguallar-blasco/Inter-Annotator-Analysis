@@ -212,7 +212,7 @@ def main():
 
     # Calculate average observed agreement between annotators
 
-    with open("entity_typing_deduped-Results_Kappa_SecondLayer.json", "w") as f1:
+    with open("entity_typing_deduped-Results_Kappa_ThirdLayer.json", "w") as f1:
         json.dump(agreement_dict, f1)
 
 

@@ -6,7 +6,7 @@ from collections import defaultdict
 with open('pilot-Results.json') as f1:
     data_1 = json.load(f1)
 
-with open('entity_typing_deduped-Results_Kappa.json') as f2:
+with open('entity_typing_deduped-Results_Kappa_ThirdLayer.json') as f2:
     data_2 = json.load(f2)
 
 
@@ -85,7 +85,7 @@ print(csv_format_list)
 
 csv_format_list_filtered = filter(None, csv_format_list)
 
-with open('annotator_scores-Results_Kappa.csv', 'w', newline='') as csvfile:
+with open('annotator_scores-Results_Kappa_ThirdLayer.csv', 'w', newline='') as csvfile:
     fieldnames = ['Turkle.Username', 'Pilot.Data.Agreement', 'Pilot.Data.Average.Time', 
             'Entity.Typing.Agreement', 'Entity.Typing.Average.Time', 'Annotator.Score']
     writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
