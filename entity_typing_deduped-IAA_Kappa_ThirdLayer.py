@@ -44,7 +44,8 @@ def calculate_matches(prep_dict, agreement_dict):
             
             username_dict = {'BallotSlate': 0, 'PaperBallot': 0, 
                     'Document': 0, 'Equipment': 0, 'Flag': 0, 'Wreckage': 0, 
-                    'BehaviorCrime': 0, 'FinanaicalCrime': 0, 'PoliticalCrime': 0, 'ViolentCrime': 0, 
+                    'BehaviorCrime': 0, 'FinanaicalCrime': 0, 'PoliticalCrime': 0, 'ViolentCrime': 0,
+                    'PoliceMisconduct': 0, 'Terrorism': 0,
                     'Building': 0, 'GeographicalArea': 0, 'Installation': 0, 'Structure': 0, 'Way': 0,
                         'ApartmentBuilding': 0, 'GovernmentBuilding': 0, 'House': 0, 'OfficeBuilding': 0,
                         'School': 0, 'StoreShop': 0, 'VotingFacility': 0, 'Border': 0, 'CheckPoint': 0,
@@ -52,12 +53,12 @@ def calculate_matches(prep_dict, agreement_dict):
                         'Barricade': 0, 'Bridge': 0, 'Plaza': 0, 'Tower': 0, 'Highway': 0, 'Street': 0,
                     'Country': 0, 'OrganizationOfCountries': 0, 'ProvinceState': 0, 'UrbanArea': 0,
                         'City': 0, 'Village': 0,
-                    'GeographicPoint': 0, 'Land': 0, 'Position': 0, 'Adress': 0, 'Continent': 0, 
+                    'GeographicPoint': 0, 'Land': 0, 'Position': 0, 'Address': 0, 'Continent': 0, 
                         'AirSpace': 0, 'CrimeScene': 0, 'Neighborhood': 0, 'Region': 0,
                     'Assests': 0, 'Cash': 0, 
                     'Association': 0, 'CommericalOrganization': 0, 'CriminalOrganization': 0, 
                         'Government': 0, 'International': 0, 'MilitaryOrganization': 0, 
-                        'PoliticalOrganization': 0, 'Club', 'Team': 0, 'BroadcastingCompany': 0,
+                        'PoliticalOrganization': 0, 'Club': 0, 'Team': 0, 'BroadcastingCompany': 0,
                         'Corportation': 0, 'Manufacturer': 0, 'NewsAgency': 0, 'CriminalOrganization': 0,
                         'Agency': 0, 'Council': 0, 'FireDepartment': 0, 'LawEnforcementAgency': 0,
                         'LegislativeBody': 0, 'ProsecutorOffice': 0, 'Railway': 0, 'Commission': 0,
@@ -68,7 +69,8 @@ def calculate_matches(prep_dict, agreement_dict):
                         'Political': 0, 'Mercenary': 0, 'Sniper': 0, 'SportsFan': 0, 'ChiefOfPolice': 0,
                         'Govenor': 0, 'HeadOfGovernment': 0, 'Mayor': 0, 'Ambassador': 0, 
                         'Firefighter': 0, 'Journalist': 0, 'Minister': 0, 'MedicalPersonnel': 0, 
-                        'Scientist': 0, 'Spy': 0, 'ProtestLeader': 0,
+                        'Scientist': 0, 'Spy': 0, 'ProtestLeader': 0, 'Spokesperson': 0,
+                        'MilitaryOfficer': 0,
                     'NumberPercentageVotes': 0, 'TurnoutVoters': 0, 
                     'Cultural': 0, 'Ideological': 0, 'Poltical': 0, 'Religious': 0, 'Sports': 0,
                         'Opposition': 0,
@@ -84,15 +86,16 @@ def calculate_matches(prep_dict, agreement_dict):
                         'RubberBullets': 0, 'Cannon': 0, 'Bat': 0, 'Hatchet': 0, 'PoisonGas': 0,
                         'TearGas': 0, 'Artillery': 0, 'Firearm': 0, 'AirToMissile': 0,
                         'MissileLauncher': 0, 'Missile': 0, 'SurfaceToAirMissile': 0, 
-                        'Rock': 0,
+                        'Rock': 0, 'AntiAircraftMissle': 0, 'MilitaryEquipment': 0,  
                     'LOC': 0, 'MON': 0, 'ORG': 0, 'PER': 0,
                         'RES': 0, 'SID': 0, 'TTL': 0, 'VAL': 0, 'VEH': 0, 
                         'WEA': 0, 'BAL': 0, 'COM': 0, 'CRM': 0, 'FAC': 0, 
-                        'GPE': 0, 'LAW': 0, -1: 0, 'n/a': 0}
+                        'GPE': 0, 'LAW': 0, -1: 0}
 
             compare_username_dict = {'BallotSlate': 0, 'PaperBallot': 0, 
                     'Document': 0, 'Equipment': 0, 'Flag': 0, 'Wreckage': 0, 
-                    'BehaviorCrime': 0, 'FinanaicalCrime': 0, 'PoliticalCrime': 0, 'ViolentCrime': 0, 
+                    'BehaviorCrime': 0, 'FinanaicalCrime': 0, 'PoliticalCrime': 0, 'ViolentCrime': 0,
+                        'PoliceMisconduct': 0, 'Terrorism': 0,
                     'Building': 0, 'GeographicalArea': 0, 'Installation': 0, 'Structure': 0, 'Way': 0,
                         'ApartmentBuilding': 0, 'GovernmentBuilding': 0, 'House': 0, 'OfficeBuilding': 0,
                         'School': 0, 'StoreShop': 0, 'VotingFacility': 0, 'Border': 0, 'CheckPoint': 0,
@@ -100,12 +103,12 @@ def calculate_matches(prep_dict, agreement_dict):
                         'Barricade': 0, 'Bridge': 0, 'Plaza': 0, 'Tower': 0, 'Highway': 0, 'Street': 0,
                     'Country': 0, 'OrganizationOfCountries': 0, 'ProvinceState': 0, 'UrbanArea': 0,
                         'City': 0, 'Village': 0,
-                    'GeographicPoint': 0, 'Land': 0, 'Position': 0, 'Adress': 0, 'Continent': 0, 
+                    'GeographicPoint': 0, 'Land': 0, 'Position': 0, 'Address': 0, 'Continent': 0, 
                         'AirSpace': 0, 'CrimeScene': 0, 'Neighborhood': 0, 'Region': 0,
                     'Assests': 0, 'Cash': 0, 
                     'Association': 0, 'CommericalOrganization': 0, 'CriminalOrganization': 0, 
                         'Government': 0, 'International': 0, 'MilitaryOrganization': 0, 
-                        'PoliticalOrganization': 0, 'Club', 'Team': 0, 'BroadcastingCompany': 0,
+                        'PoliticalOrganization': 0, 'Club': 0, 'Team': 0, 'BroadcastingCompany': 0,
                         'Corportation': 0, 'Manufacturer': 0, 'NewsAgency': 0, 'CriminalOrganization': 0,
                         'Agency': 0, 'Council': 0, 'FireDepartment': 0, 'LawEnforcementAgency': 0,
                         'LegislativeBody': 0, 'ProsecutorOffice': 0, 'Railway': 0, 'Commission': 0,
@@ -116,7 +119,8 @@ def calculate_matches(prep_dict, agreement_dict):
                         'Political': 0, 'Mercenary': 0, 'Sniper': 0, 'SportsFan': 0, 'ChiefOfPolice': 0,
                         'Govenor': 0, 'HeadOfGovernment': 0, 'Mayor': 0, 'Ambassador': 0, 
                         'Firefighter': 0, 'Journalist': 0, 'Minister': 0, 'MedicalPersonnel': 0, 
-                        'Scientist': 0, 'Spy': 0, 'ProtestLeader': 0,
+                        'Scientist': 0, 'Spy': 0, 'ProtestLeader': 0, 'Spokesperson': 0,
+                        'MilitaryOfficer': 0,
                     'NumberPercentageVotes': 0, 'TurnoutVoters': 0, 
                     'Cultural': 0, 'Ideological': 0, 'Poltical': 0, 'Religious': 0, 'Sports': 0,
                         'Opposition': 0,
@@ -132,11 +136,11 @@ def calculate_matches(prep_dict, agreement_dict):
                         'RubberBullets': 0, 'Cannon': 0, 'Bat': 0, 'Hatchet': 0, 'PoisonGas': 0,
                         'TearGas': 0, 'Artillery': 0, 'Firearm': 0, 'AirToMissile': 0,
                         'MissileLauncher': 0, 'Missile': 0, 'SurfaceToAirMissile': 0, 
-                        'Rock': 0,
+                        'Rock': 0, 'AntiAircraftMissle': 0, 'MilitaryEquipment': 0,  
                     'LOC': 0, 'MON': 0, 'ORG': 0, 'PER': 0,
                         'RES': 0, 'SID': 0, 'TTL': 0, 'VAL': 0, 'VEH': 0, 
                         'WEA': 0, 'BAL': 0, 'COM': 0, 'CRM': 0, 'FAC': 0, 
-                        'GPE': 0, 'LAW': 0, -1: 0, 'n/a': 0}
+                        'GPE': 0, 'LAW': 0, -1: 0}
             
 
             for answers in t1:
@@ -147,17 +151,25 @@ def calculate_matches(prep_dict, agreement_dict):
 
                     #print(username)
                     #print(compare_username)
-                    answer_type = answers['subtype']
-                    #if answer_type == 'n/a':
-                       # username_dict[answers['type']] += 1
-                    #else:
-                    username_dict[answer_type] += 1
+                    answer_type = answers['subsubtype']
+                    if answer_type == 'n/a':
+                       answer_type = answers['subtype']
+                       if answer_type == 'n/a':
+                           username_dict[answers['type']] += 1
+                       else: 
+                           username_dict[answer_type] += 1
+                    else:
+                        username_dict[answer_type] += 1
 
-                    answer_type = compare_answers['subtype']
-                    #if answer_type == 'n/a':
-                    #    compare_username_dict[compare_answers['type']] += 1
-                    #else:
-                    compare_username_dict[answer_type] += 1
+                    answer_type = compare_answers['subsubtype']
+                    if answer_type == 'n/a':
+                        answer_type = compare_answers['subtype']
+                        if answer_type == 'n/a':
+                            compare_username_dict[compare_answers['type']] += 1
+                        else:
+                            compare_username_dict[answer_type] +1
+                    else:
+                        compare_username_dict[answer_type] += 1
             
             total += 1
 

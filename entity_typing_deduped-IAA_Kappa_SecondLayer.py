@@ -66,7 +66,7 @@ def calculate_matches(prep_dict, agreement_dict):
                     'LOC': 0, 'MON': 0, 'ORG': 0, 'PER': 0,
                         'RES': 0, 'SID': 0, 'TTL': 0, 'VAL': 0, 'VEH': 0, 
                         'WEA': 0, 'BAL': 0, 'COM': 0, 'CRM': 0, 'FAC': 0, 
-                        'GPE': 0, 'LAW': 0, -1: 0, 'n/a': 0}
+                        'GPE': 0, 'LAW': 0, -1: 0}
 
             compare_username_dict = {'BallotSlate': 0, 'PaperBallot': 0, 
                     'Document': 0, 'Equipment': 0, 'Flag': 0, 'Wreckage': 0, 
@@ -92,7 +92,7 @@ def calculate_matches(prep_dict, agreement_dict):
                     'LOC': 0, 'MON': 0, 'ORG': 0, 'PER': 0,
                         'RES': 0, 'SID': 0, 'TTL': 0, 'VAL': 0, 'VEH': 0, 
                         'WEA': 0, 'BAL': 0, 'COM': 0, 'CRM': 0, 'FAC': 0, 
-                        'GPE': 0, 'LAW': 0, -1: 0, 'n/a': 0}
+                        'GPE': 0, 'LAW': 0, -1: 0}
             
 
             for answers in t1:
@@ -104,16 +104,16 @@ def calculate_matches(prep_dict, agreement_dict):
                     #print(username)
                     #print(compare_username)
                     answer_type = answers['subtype']
-                    #if answer_type == 'n/a':
-                       # username_dict[answers['type']] += 1
-                    #else:
-                    username_dict[answer_type] += 1
+                    if answer_type == 'n/a':
+                       username_dict[answers['type']] += 1
+                    else:
+                        username_dict[answer_type] += 1
 
                     answer_type = compare_answers['subtype']
-                    #if answer_type == 'n/a':
-                    #    compare_username_dict[compare_answers['type']] += 1
-                    #else:
-                    compare_username_dict[answer_type] += 1
+                    if answer_type == 'n/a':
+                        compare_username_dict[compare_answers['type']] += 1
+                    else:
+                        compare_username_dict[answer_type] += 1
             
             total += 1
 
