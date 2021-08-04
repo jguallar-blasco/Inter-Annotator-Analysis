@@ -33,6 +33,8 @@ def calculate_matches(prep_dict, agreement_dict):
         agreement = 0
         t1 = prep_dict[username]
         agreement_dict[username] = []
+        start_difference = 0
+        end_difference = 0
 
         for compare_username in prep_dict:
             t2 = prep_dict[compare_username]
@@ -52,6 +54,11 @@ def calculate_matches(prep_dict, agreement_dict):
 
                             total += 1
 
+                            # Calculate differences
+                            start_difference += (answers['startToken'] - compare_answers['startToken'])
+                            end_difference += (answers['endToken'] - compare_answers['startToken'])
+
+                            
                             if (answers['startToken'] == compare_answers['startToken'] 
                                     and answers['endToken'] == compare_answers['endToken']):
                                 agreement += 1
@@ -61,6 +68,8 @@ def calculate_matches(prep_dict, agreement_dict):
         else:
             # Calculate observed agreement for annotator
             agreement_dict[username].append(agreement/total)
+            agreement_dict[username].append(abs(start_difference/total))
+            agreement_dict[username].append(abs(end_difference/total))
    
     print(agreement_dict)
     return agreement_dict

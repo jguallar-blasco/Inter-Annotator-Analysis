@@ -4,6 +4,7 @@ import re
 import json
 import sys
 from sklearn.metrics import cohen_kappa_score
+import statistics
 
 # Sort_annotatons functions, organized data according to Turkle.Username
 def sort_annotations(file, prep_dict):  
@@ -32,6 +33,7 @@ def calculate_matches(prep_dict, agreement_dict):
     for username in prep_dict:
         total = 0
         agreement = 0
+        agreements = []
         t1 = prep_dict[username]
 
         #print(username)
@@ -85,9 +87,12 @@ def calculate_matches(prep_dict, agreement_dict):
             #print(username)
             #print(compare_username)
             #print(cohen_kappa_score(user_count, compareuser_count))
+
+            agreements.append(cohen_kappa_score(user_count, compareuser_count))
             agreement += cohen_kappa_score(user_count, compareuser_count)
 
         agreement_dict[username].append(agreement/total)
+        agreement_dict[username].append(statistics.median(agreements))
     print(agreement_dict)
     return agreement_dict
                        
